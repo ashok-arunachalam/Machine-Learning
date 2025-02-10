@@ -2,13 +2,12 @@
 
 #imppoting the libraries
 import numpy as np
-import matplotlib.pyplot as plt
 import pandas as pd
 from sklearn.impute import SimpleImputer
 
 
 #importing dataSets
-datasets = pd.read_csv('server/resources/Data.csv')
+datasets = pd.read_csv('D:/Ashok\'s-Poc/Machine-Learning/server/resources/Data.csv')
 x = datasets.iloc[ :, :-1].values
 y = datasets.iloc[: , -1].values
 
