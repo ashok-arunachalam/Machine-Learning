@@ -9,6 +9,9 @@ from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder, LabelEncoder
 #imports for data splitting train and test
 from sklearn.model_selection import train_test_split
+#imports for Feature Scaling
+from sklearn.preprocessing import StandardScaler
+
 
 #<------------------------------------------------------------------------------------------------------------------------------->
 #importing dataSets
@@ -50,7 +53,16 @@ encoded_label_value_y = label_transformer.fit_transform(label_value_y)
 print(encoded_label_value_y)
 
 #<-------------------------------------------------------------------------------------------------------------------------------->
-feature_value_x_train, feature_value_x_test, label_value_y_train, label_value_y_test = train_test_split(feature_value_x, label_value_y,
+feature_value_x_train, feature_value_x_test, label_value_y_train, label_value_y_test = train_test_split(encoded_feature_value_x, encoded_label_value_y,
                                                                                                         test_size= 0.2, random_state=1)
 
 print(feature_value_x_train, feature_value_x_test, label_value_y_train, label_value_y_test)
+
+#<-------------------------------------------------------------------------------------------------------------------------------->
+
+sc = StandardScaler()
+feature_value_x_train[: , 3:] = sc.fit_transform(feature_value_x_train[:, 3:])
+feature_value_x_test[: , 3:] = sc.transform(feature_value_x_test[:, 3:])
+
+print(feature_value_x_train)
+print(feature_value_x_test)
